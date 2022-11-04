@@ -1,4 +1,3 @@
-/*CARD Y CONTAINER DE PRODUCTS */
 
 .contenedor{
     display: grid;
@@ -19,7 +18,6 @@
     max-height: 300px;
 }
 
-/*ITEM DETAIL*/
 
 .detailContainer{
     display: flex;

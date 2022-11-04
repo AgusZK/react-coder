@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 export const cartContext = createContext();
 
 export const Data = ({ children }) => {
