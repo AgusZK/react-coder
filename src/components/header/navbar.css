@@ -65,3 +65,16 @@ header p {
 .icon {
   color: black;
 }
+
+.contador {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  background-color: red;
+  width: 25%;
+  border-radius: 20%;
+  color: white;
+  left: 32px;
+  top: 13px;
+  font-size: 13px;
+}

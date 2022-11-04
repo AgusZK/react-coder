@@ -10,7 +10,7 @@ function NavBar({ usuario }) {
 		<header>
 			<div className="App-header">
 				<div className="logoContainer">
-					<a href="index.html">
+					<a href="/">
 						<FontAwesomeIcon
 							className="reactLogo"
 							icon={faReact}
@@ -18,7 +18,7 @@ function NavBar({ usuario }) {
 					</a>
 				</div>
 				<List />
-				<Link to="/cart">
+				<Link to="/cart" style={{ position: 'relative' }}>
 					<CartWidget />
 				</Link>
 			</div>

@@ -28,6 +28,7 @@
     margin: 30px;
     background-color: rgb(22, 22, 39);
     color: white;
+    border-radius: 5px;
 }
 
 .detailContainer div {
@@ -40,6 +41,7 @@
     min-width: 600px;
     border-right: 1px solid rgb(106, 106, 139);
     margin-right: 20px;
+    
 }
 
 .detailContainer button {
@@ -47,8 +49,36 @@
     padding: 5px;
     background-color:#0275d8 ;
     color: white;
-    text-align: center;
     border: 0;
+}
+
+.cartContainer {
+    width: 50%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    border: 1px solid #0275d8 ;
+}
+
+.carrito {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.ordenDeCompra{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.ordenDeCompra h2{
+    border: 1px solid #0275d8 ;
+    padding: 10px;
+}
+
+.ordenDeCompra span {
+    color:gray;
 }

@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { products } from '../../mock/productMock';
 import ItemList from './ItemList';
 import './body.css';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebaseConfig';
 
 const ItemListContainer = () => {
 	const [items, setItems] = useState([]);
 
 	const { categoria } = useParams();
-
 	useEffect(() => {
-		const traerProductos = () => {
-			return new Promise((res, rej) => {
-				const prodFiltrados = products.filter(
-					(prod) => prod.categoria === categoria
-				);
-				const prod = categoria ? prodFiltrados : products;
-				setTimeout(() => {
-					res(prod);
-				}, 100);
-			});
-		};
-		traerProductos()
+		const collectionProd = collection(db, 'productos');
+		const ref = categoria
+			? query(collectionProd, where('categoria', '==', categoria))
+			: collectionProd;
+
+		getDocs(ref)
 			.then((res) => {
-				setItems(res);
+				const products = res.docs.map((prod) => {
+					return {
+						id: prod.id,
+						...prod.data(),
+					};
+				});
+				setItems(products);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -36,4 +36,5 @@ const ItemListContainer = () => {
 		</div>
 	);
 };
+
 export default ItemListContainer;

@@ -1,6 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
+import { cartContext } from '../../context/CartContext';
 
 const ItemDetail = ({ prod }) => {
+	const {
+		getItemQuantity,
+		increaseCartQuantity,
+		decreaseCartQuantity,
+		addToCart,
+	} = useContext(cartContext);
+	const quantity = getItemQuantity(prod.id);
+
 	return (
 		<div className="detailContainer">
 			<img src={prod.imagen} alt="" />
@@ -13,7 +23,32 @@ const ItemDetail = ({ prod }) => {
 				</p>
 				<div>
 					<h2>${prod.precio}</h2>
-					<button>Agregar al carrito</button>
+					{quantity === 0 ? (
+						<button className="btn" onClick={() => addToCart(prod)}>
+							Agregar al carrito
+						</button>
+					) : (
+						<div className="add-item">
+							<button
+								className="add"
+								onClick={() => increaseCartQuantity(prod.id)}
+							>
+								+
+							</button>
+							<p>
+								<span style={{ fontSize: '20px' }} className="m-1">
+									{quantity}{' '}
+								</span>
+								En el carrito
+							</p>
+							<button
+								className="remove"
+								onClick={() => decreaseCartQuantity(prod.id)}
+							>
+								-
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
